@@ -21,6 +21,20 @@ public class GirlController {
         return girlRep.findAll();
     }
 
+    @RequestMapping(value = "/girl",method = RequestMethod.GET)
+    public String getGirl(){
+        String result;
+        try {
+            List<Girl> girls = girlRep.findAll();
+            System.out.println("here will call boy! boys.size is: " + girls.size());
+            result = "boy id is: " +  girls.get(0).getId() + " boy age is: " + girls.get(0).getAge();
+        } catch (Exception e) {
+            System.out.println("here exception, ex: " + e.getMessage());
+            result = "here exception, ex: " + e.getMessage();
+        }
+        return result;
+    }
+
     /**
      * 添加一个女生
      * @param cupSize
